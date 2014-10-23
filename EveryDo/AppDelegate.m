@@ -4,7 +4,7 @@
 //
 //  Created by Audrey Jun on 2014-10-22.
 //  Copyright (c) 2014 audreyjun. All rights reserved.
-//
+// Instantiate several Todo objects, and fill out their values with some tasks of your choice. Put them all into an array.
 
 #import "AppDelegate.h"
 #import "DetailViewController.h"
@@ -13,11 +13,46 @@
 
 @end
 
-@implementation AppDelegate
+@implementation AppDelegate {
+    NSMutableArray *_itemsArray;
+}
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    _itemsArray = [NSMutableArray arrayWithCapacity:20];
+    
+    ToDo *item = [[ToDo alloc] initWithTitle:@"Laundry"
+                              andDescription:@"Wash and dry linens."
+                              andPriorityNum:@"Priority: 1"
+                              andIsCompleted:NO];
+    [_itemsArray addObject:item];
+    
+    item = [[ToDo alloc] initWithTitle:@"Dishes"
+                        andDescription:@"Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes."
+                        andPriorityNum:@"Priority: 2"
+                        andIsCompleted:YES];
+    [_itemsArray addObject:item];
+    
+    item = [[ToDo alloc] initWithTitle:@"Homework"
+                        andDescription:@"Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments."
+                        andPriorityNum:@"Priority: 3"
+                        andIsCompleted:NO];
+    [_itemsArray addObject:item];
+    
+    item = [[ToDo alloc] initWithTitle:@"Grocery Shopping"
+                        andDescription:@"Buy groceries from Safeway."
+                        andPriorityNum:@"Priority: 4"
+                        andIsCompleted:YES];
+    [_itemsArray addObject:item];
+    
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    MasterViewController *masterViewController = [navigationController viewControllers][0];
+    masterViewController.vcItemsArray = _itemsArray;
+    
+//    DetailViewController *detailViewController = [masterViewController childViewControllers][0];
+//    detailViewController.detailItemsArray = _itemsArray;
+
     return YES;
 }
 

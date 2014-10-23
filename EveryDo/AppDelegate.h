@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ToDo.h"
+#import "MasterViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
 
 @end
 

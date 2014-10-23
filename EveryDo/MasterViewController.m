@@ -12,6 +12,7 @@
 @interface MasterViewController ()
 
 @property NSMutableArray *objects;
+
 @end
 
 @implementation MasterViewController
@@ -23,10 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
-
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
-    self.navigationItem.rightBarButtonItem = addButton;
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,22 +32,22 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender {
-    if (!self.objects) {
-        self.objects = [[NSMutableArray alloc] init];
-    }
-    [self.objects insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([[segue identifier] isEqualToString:@"showDetail"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = self.objects[indexPath.row];
-        [[segue destinationViewController] setDetailItem:object];
+        ToDo *item = self.vcItemsArray[indexPath.row];
+        [[segue destinationViewController] setDetailItem:item];
+    }
+    
+    //have to tell AddItemViewController that (the MasterViewController) is its delegate:
+    if ([segue.identifier isEqualToString:@"AddItem"]) {
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddItemViewController *addItemViewController = [navigationController viewControllers][0];
+        addItemViewController.delegate = self;
     }
 }
 
@@ -60,29 +58,95 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    return self.vcItemsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
+    ItemCell *cell = (ItemCell*)[tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
+    
+//    cell.tag = indexPath.row; //////get the cell's index path #
+    cell.delegate = self;
+    
+    ToDo *toDoItem = (self.vcItemsArray)[indexPath.row];
 
-    NSDate *object = self.objects[indexPath.row];
-    cell.textLabel.text = [object description];
+    NSDictionary* attributes = @{
+                                 NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
+                                 };
+    
+    NSAttributedString* attrTitle = [[NSAttributedString alloc]
+                                    initWithString:toDoItem.title attributes:attributes];
+    NSAttributedString* attrDescrip = [[NSAttributedString alloc]
+                                    initWithString:toDoItem.descrip attributes:attributes];
+    NSAttributedString* attrPriority = [[NSAttributedString alloc]
+                                    initWithString:toDoItem.priorityNumber attributes:attributes];
+
+    
+    if (toDoItem.isCompleted) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        cell.titleLabel.attributedText = attrTitle;
+        cell.descripLabel.attributedText = attrDescrip;
+        cell.priorityLabel.attributedText = attrPriority;
+        
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell.titleLabel.text = toDoItem.title;
+        cell.descripLabel.text = toDoItem.descrip;
+        cell.priorityLabel.text = toDoItem.priorityNumber;
+    }
     return cell;
 }
 
+//
+
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return YES; // you have to ensure the existing UIPanGestureRecognizer — which lets you swipe to show the delete button — is disabled. Otherwise that gesture recognizer will collide with the custom one you’re adding to your project.
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.objects removeObjectAtIndex:indexPath.row];
+        [self.vcItemsArray removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
     }
+//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
+//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+//    }
 }
 
+
+//implement the methods from the AddItemViewControllerDelegate
+
+- (void)addItemViewControllerDidCancel:(AddItemViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil]; //just go back to previous screen
+}
+
+- (void)addItemViewController:(AddItemViewController *)controller didAddItem:(ToDo *)item {
+    [self.vcItemsArray addObject:item];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.vcItemsArray count] - 1) inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self dismissViewControllerAnimated:YES completion:nil]; //then go back to previous screen
+}
+
+//implement the methods from the ItemCellDelegate
+
+- (void)didSwipeItemCellToRight:(ItemCell*)item {
+    
+    //tableview indexpathforcell //never use in cellforrowindexpath b/c cyclical (nikita)
+    
+    //int indexNumber = (int)item.tag; <<< this doesn't work because index numbers change when delete item
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
+    int indexPathNo = (int)[indexPath row];
+    ToDo *thisItem = (self.vcItemsArray)[(int)indexPathNo];
+    thisItem.isCompleted = YES;
+    [self.tableView reloadData];
+}
+
+- (void)didSwipeItemCellToLeft:(ItemCell*)item {
+    //int indexNumber = (int)item.tag;
+    NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
+    int indexPathNo = (int)[indexPath row];
+    ToDo *thisItem = (self.vcItemsArray)[(int)indexPathNo];
+    thisItem.isCompleted = NO;
+    [self.tableView reloadData];
+}
 @end
