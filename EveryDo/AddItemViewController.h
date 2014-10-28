@@ -30,5 +30,6 @@
 - (IBAction)done:(id)sender;
 
 - (IBAction) clickedBackground;
+- (IBAction)setOurDefaults:(id)sender;
 
 @end

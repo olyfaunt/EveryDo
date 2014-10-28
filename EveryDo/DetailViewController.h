@@ -9,10 +9,18 @@
 #import <UIKit/UIKit.h>
 #import "ToDo.h"
 
-@interface DetailViewController : UIViewController
+@interface DetailViewController : UIViewController {
+    NSString *_docPath;
+}
 
 @property (strong, nonatomic) ToDo* detailItem;
 @property (weak, nonatomic) IBOutlet UILabel *detailDescriptionLabel;
+
+@property (copy) NSString *docPath;
+- (id)init;
+- (id)initWithDocPath:(NSString *)docPath;
+- (void)saveData;
+- (void)deleteDoc;
 
 //@property (nonatomic, strong) NSMutableArray *detailItemsArray;
 

@@ -15,7 +15,7 @@
 - (void)didSwipeItemCellToLeft:(ItemCell*)item;
 @end
 
-@interface ItemCell : UITableViewCell <UIGestureRecognizerDelegate>
+@interface ItemCell : UITableViewCell <UIGestureRecognizerDelegate, NSCoding>
 
 //delegate property to log action when swipe this ItemCell
 @property (nonatomic, weak) id <ItemCellDelegate> delegate;

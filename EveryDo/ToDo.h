@@ -12,12 +12,15 @@ is completed indicator */
 
 #import <Foundation/Foundation.h>
 
-@interface ToDo : NSObject
+@interface ToDo : NSObject <NSCoding>
 
 @property (nonatomic, retain) NSString* title;
 @property (nonatomic, retain) NSString* descrip;
 @property (nonatomic, retain) NSString* priorityNumber;
 @property (nonatomic, assign) BOOL isCompleted;
+
+@property (nonatomic, strong) NSArray *items;
+@property (nonatomic, strong) NSMutableDictionary *itemsDict;
 
 - (instancetype)initWithTitle:(NSString*)title
                andDescription:(NSString*)descrip

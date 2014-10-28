@@ -17,6 +17,29 @@
 
 @implementation ToDo
 
+-(void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeObject:self.title forKey:@"title"];
+    [aCoder encodeObject:self.descrip forKey:@"descrip"];
+    [aCoder encodeObject:self.priorityNumber forKey:@"priorityNumber"];
+    [aCoder encodeBool:self.isCompleted forKey:@"isCompleted"];
+    [aCoder encodeObject:self.items forKey:@"items"];
+    [aCoder encodeObject:self.itemsDict forKey:@"itemsDict"];
+}
+
+-(id)initWithCoder:(NSCoder *)aDecoder {
+//    self = [super init];
+//    if (!self) return nil;
+    NSString* title = [aDecoder decodeObjectForKey:@"title"];
+    NSString* descrip = [aDecoder decodeObjectForKey:@"descrip"];
+    NSString* priorityNumber = [aDecoder decodeObjectForKey:@"priorityNumber"];
+    BOOL isCompleted = [aDecoder decodeBoolForKey:@"isCompleted"];
+//
+//    NSDictionary *itemsDict = [aDecoder decodeObjectForKey:@"items"];
+//    self.itemsDict = [[NSMutableDictionary alloc] initWithDictionary:itemsDict copyItems:YES];
+    
+    return [self initWithTitle:title andDescription:descrip andPriorityNum:priorityNumber andIsCompleted:isCompleted];
+}
+
 - (instancetype)initWithTitle:(NSString*)title
                andDescription:(NSString*)descrip
                andPriorityNum:(NSString*)priorityNumber

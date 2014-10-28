@@ -17,48 +17,91 @@
     NSMutableArray *_itemsArray;
 }
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    _itemsArray = [NSMutableArray arrayWithCapacity:20];
+//    _itemsArray = [NSMutableArray arrayWithCapacity:20];
     
-    ToDo *item = [[ToDo alloc] initWithTitle:@"Laundry"
-                              andDescription:@"Wash and dry linens."
-                              andPriorityNum:@"Priority: 1"
-                              andIsCompleted:NO];
-    [_itemsArray addObject:item];
-    
-    item = [[ToDo alloc] initWithTitle:@"Dishes"
-                        andDescription:@"Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes."
-                        andPriorityNum:@"Priority: 2"
-                        andIsCompleted:YES];
-    [_itemsArray addObject:item];
-    
-    item = [[ToDo alloc] initWithTitle:@"Homework"
-                        andDescription:@"Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments."
-                        andPriorityNum:@"Priority: 3"
-                        andIsCompleted:NO];
-    [_itemsArray addObject:item];
-    
-    item = [[ToDo alloc] initWithTitle:@"Grocery Shopping"
-                        andDescription:@"Buy groceries from Safeway."
-                        andPriorityNum:@"Priority: 4"
-                        andIsCompleted:YES];
-    [_itemsArray addObject:item];
-    
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    MasterViewController *masterViewController = [navigationController viewControllers][0];
-    masterViewController.vcItemsArray = _itemsArray;
+//    ToDo *item = [[ToDo alloc] initWithTitle:@"Laundry"
+//                              andDescription:@"Wash and dry linens."
+//                              andPriorityNum:@"Priority: 1"
+//                              andIsCompleted:NO];
+//    [_itemsArray addObject:item];
+//    
+//    item = [[ToDo alloc] initWithTitle:@"Dishes"
+//                        andDescription:@"Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes. Wash and dry dirty dishes."
+//                        andPriorityNum:@"Priority: 2"
+//                        andIsCompleted:YES];
+//    [_itemsArray addObject:item];
+//    
+//    item = [[ToDo alloc] initWithTitle:@"Homework"
+//                        andDescription:@"Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments. Review class notes and complete assignments."
+//                        andPriorityNum:@"Priority: 3"
+//                        andIsCompleted:NO];
+//    [_itemsArray addObject:item];
+//    
+//    item = [[ToDo alloc] initWithTitle:@"Grocery Shopping"
+//                        andDescription:@"Buy groceries from Safeway."
+//                        andPriorityNum:@"Priority: 4"
+//                        andIsCompleted:YES];
+//    [_itemsArray addObject:item];
+//
+//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    MasterViewController *masterViewController = [navigationController viewControllers][0];
+//    masterViewController.vcItemsArray = _itemsArray;
     
 //    DetailViewController *detailViewController = [masterViewController childViewControllers][0];
 //    detailViewController.detailItemsArray = _itemsArray;
+//    //
 
+    
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:@"appData"];
+    
+    
+
+    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+    MasterViewController *masterViewController = [navigationController viewControllers][0];
+
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:filePath]) {
+        NSData *data = [NSData dataWithContentsOfFile:filePath];
+        NSDictionary *savedData = [NSKeyedUnarchiver unarchiveObjectWithData:data];
+        
+        if ([savedData objectForKey:@"items"] != nil) {
+        _itemsArray = [[NSMutableArray alloc] initWithArray:[savedData objectForKey:@"items"]];
+        
+        //NSMutableArray *loadedItems = [ToDoDatabase loadToDoDocs];
+        masterViewController.vcItemsArray = _itemsArray;
+        
+        }
+        
+    } else {
+        _itemsArray = [[NSMutableArray alloc] init];
+                masterViewController.vcItemsArray = _itemsArray;
+    }
     return YES;
+}
+
+- (void) saveData {
+    NSMutableDictionary *dataDict = [[NSMutableDictionary alloc] initWithCapacity:20];
+    if (_itemsArray != nil) {
+        [dataDict setObject:_itemsArray forKey:@"items"];
+    }
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:@"appData"];
+    
+    [NSKeyedArchiver archiveRootObject:dataDict toFile:filePath];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
     // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
+    
+    [self saveData];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
@@ -76,6 +119,7 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    [self saveData];
 }
 
 @end

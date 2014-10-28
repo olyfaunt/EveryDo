@@ -189,6 +189,20 @@
                                     <rect key="frame" x="152" y="178" width="141" height="258"/>
                                 </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DR0-96-9Tp">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Default">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="heightClass=regular-widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="28" y="566" width="265" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="setOurDefaults:" destination="11X-cz-idp" eventType="touchUpInside" id="2g6-rt-fjK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <variation key="default">
@@ -201,6 +215,7 @@
                                 <exclude reference="DQ2-RJ-0PD"/>
                                 <exclude reference="l1y-CN-h42"/>
                                 <exclude reference="4hu-Av-gBo"/>
+                                <exclude reference="DR0-96-9Tp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -213,6 +228,7 @@
                                 <include reference="DQ2-RJ-0PD"/>
                                 <include reference="l1y-CN-h42"/>
                                 <include reference="4hu-Av-gBo"/>
+                                <include reference="DR0-96-9Tp"/>
                             </mask>
                         </variation>
                         <connections>
@@ -261,7 +277,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="140" width="360" height="561"/>
+                                    <rect key="frame" x="34" y="128" width="360" height="561"/>
                                 </variation>
                             </label>
                         </subviews>
