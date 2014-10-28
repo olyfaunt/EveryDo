@@ -89,7 +89,7 @@
                                         initWithString:entry.priorityNumber attributes:attributes];
     
     
-    if (entry.isCompleted) {
+    if ([entry.isCompleted boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.titleLabel.attributedText = attrTitle;
         cell.descripLabel.attributedText = attrDescrip;
@@ -120,7 +120,7 @@
     
     NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
     ToDoManagedObject *thisItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    thisItem.isCompleted = YES;
+    thisItem.isCompleted = [NSNumber numberWithBool:YES];
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
     [self.tableView reloadData];
@@ -130,7 +130,7 @@
 
     NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
     ToDoManagedObject *thisItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    thisItem.isCompleted = NO;
+    thisItem.isCompleted = [NSNumber numberWithBool:NO];
     CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
     [coreDataStack saveContext];
     [self.tableView reloadData];

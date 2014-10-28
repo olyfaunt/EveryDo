@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		992A13EE1A00331B00606F97 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13ED1A00331B00606F97 /* UsersViewController.m */; };
+		992A13F51A00418300606F97 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13F41A00418300606F97 /* UserCell.m */; };
 		9959368019FF46C1006A2E9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959367F19FF46C1006A2E9F /* CoreData.framework */; };
 		9959368219FF46D2006A2E9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368119FF46D2006A2E9F /* CoreGraphics.framework */; };
 		9959368419FF46EA006A2E9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368319FF46EA006A2E9F /* CoreLocation.framework */; };
@@ -39,6 +41,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		992A13EC1A00331B00606F97 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
+		992A13ED1A00331B00606F97 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
+		992A13F31A00418300606F97 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
+		992A13F41A00418300606F97 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
 		9959367F19FF46C1006A2E9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9959368119FF46D2006A2E9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9959368319FF46EA006A2E9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -152,11 +158,15 @@
 				99A71C5919F82D0300D2DC76 /* MasterViewController.m */,
 				997FE00F19F8621900E6A9E9 /* EditItemViewController.h */,
 				997FE01019F8621900E6A9E9 /* EditItemViewController.m */,
+				992A13EC1A00331B00606F97 /* UsersViewController.h */,
+				992A13ED1A00331B00606F97 /* UsersViewController.m */,
 				99A71C5E19F82D0300D2DC76 /* Main.storyboard */,
 				99A71C6119F82D0300D2DC76 /* Images.xcassets */,
 				99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */,
 				99A71C7D19F8365D00D2DC76 /* ItemCell.h */,
 				99A71C7E19F8365D00D2DC76 /* ItemCell.m */,
+				992A13F31A00418300606F97 /* UserCell.h */,
+				992A13F41A00418300606F97 /* UserCell.m */,
 				99A71C5119F82D0300D2DC76 /* Supporting Files */,
 			);
 			path = EveryDo;
@@ -289,6 +299,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A71C7F19F8365D00D2DC76 /* ItemCell.m in Sources */,
+				992A13EE1A00331B00606F97 /* UsersViewController.m in Sources */,
 				995936DF1A002841006A2E9F /* UsersManagedObject.m in Sources */,
 				9959369519FF4E2F006A2E9F /* EveryDo.xcdatamodeld in Sources */,
 				997FE01119F8621900E6A9E9 /* EditItemViewController.m in Sources */,
@@ -296,6 +307,7 @@
 				99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */,
 				99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */,
 				99A71C5419F82D0300D2DC76 /* main.m in Sources */,
+				992A13F51A00418300606F97 /* UserCell.m in Sources */,
 				995936E21A00285A006A2E9F /* ToDoManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

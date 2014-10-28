@@ -5,11 +5,11 @@
         <attribute name="isCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="priorityNumber" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UsersManagedObject" inverseName="toDoList" inverseEntity="UsersManagedObject" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="UsersManagedObject" inverseName="toDoList" inverseEntity="UsersManagedObject" syncable="YES"/>
     </entity>
     <entity name="UsersManagedObject" representedClassName="UsersManagedObject" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="toDoList" toMany="YES" deletionRule="Cascade" destinationEntity="ToDoManagedObject" inverseName="user" inverseEntity="ToDoManagedObject" syncable="YES"/>
+        <relationship name="toDoList" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ToDoManagedObject" inverseName="user" inverseEntity="ToDoManagedObject" syncable="YES"/>
     </entity>
     <elements>
         <element name="ToDoManagedObject" positionX="0" positionY="0" width="128" height="118"/>

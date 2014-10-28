@@ -27,11 +27,11 @@
         self.titleTextField.text = self.entry.title;
         self.descripTextView.text = self.entry.descrip;
         self.priorityTextField.text = self.entry.priorityNumber;
-        if(self.entry.isCompleted == YES)
+        if([self.entry.isCompleted boolValue])
         {
             self.isCompletedSegmentedControl.selectedSegmentIndex = 0;
             
-        } else if(self.entry.isCompleted == NO)
+        } else //if(self.entry.isCompleted == [NSNumber numberWithBool:NO])
         {
             self.isCompletedSegmentedControl.selectedSegmentIndex = 1;
         }
@@ -83,11 +83,11 @@
     self.entry.priorityNumber = self.priorityTextField.text;
     if(self.isCompletedSegmentedControl.selectedSegmentIndex == 0)
     {
-        self.entry.isCompleted = YES;
+        self.entry.isCompleted = [NSNumber numberWithBool:YES];
         
     } else if(self.isCompletedSegmentedControl.selectedSegmentIndex == 1)
     {
-        self.entry.isCompleted = NO;
+        self.entry.isCompleted = [NSNumber numberWithBool:NO];
     }
     
     [coreDataStack saveContext];
@@ -101,11 +101,11 @@
     entry.priorityNumber = self.priorityTextField.text;
     if(self.isCompletedSegmentedControl.selectedSegmentIndex == 0)
     {
-        entry.isCompleted = YES;
+        entry.isCompleted = [NSNumber numberWithBool:YES];
         
     } else if(self.isCompletedSegmentedControl.selectedSegmentIndex == 1)
     {
-        entry.isCompleted = NO;
+        entry.isCompleted = [NSNumber numberWithBool:NO];
     }
     [coreDataStack saveContext];
 }
