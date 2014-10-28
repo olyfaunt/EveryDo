@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9959368019FF46C1006A2E9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959367F19FF46C1006A2E9F /* CoreData.framework */; };
+		9959368219FF46D2006A2E9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368119FF46D2006A2E9F /* CoreGraphics.framework */; };
+		9959368419FF46EA006A2E9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368319FF46EA006A2E9F /* CoreLocation.framework */; };
+		9959368619FF46EF006A2E9F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368519FF46EF006A2E9F /* QuartzCore.framework */; };
+		9959368819FF46F6006A2E9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368719FF46F6006A2E9F /* Foundation.framework */; };
+		9959368A19FF4701006A2E9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368919FF4701006A2E9F /* UIKit.framework */; };
+		9959369119FF4A09006A2E9F /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959369019FF4A09006A2E9F /* CoreDataStack.m */; };
 		997FE01119F8621900E6A9E9 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FE01019F8621900E6A9E9 /* AddItemViewController.m */; };
 		99A71C5419F82D0300D2DC76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5319F82D0300D2DC76 /* main.m */; };
 		99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5619F82D0300D2DC76 /* AppDelegate.m */; };
@@ -31,6 +38,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9959367F19FF46C1006A2E9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9959368119FF46D2006A2E9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9959368319FF46EA006A2E9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9959368519FF46EF006A2E9F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9959368719FF46F6006A2E9F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9959368919FF4701006A2E9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9959368F19FF4A09006A2E9F /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
+		9959369019FF4A09006A2E9F /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
 		997FE00F19F8621900E6A9E9 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
 		997FE01019F8621900E6A9E9 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
 		99A71C4E19F82D0300D2DC76 /* EveryDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -59,6 +74,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9959368019FF46C1006A2E9F /* CoreData.framework in Frameworks */,
+				9959368A19FF4701006A2E9F /* UIKit.framework in Frameworks */,
+				9959368819FF46F6006A2E9F /* Foundation.framework in Frameworks */,
+				9959368619FF46EF006A2E9F /* QuartzCore.framework in Frameworks */,
+				9959368419FF46EA006A2E9F /* CoreLocation.framework in Frameworks */,
+				9959368219FF46D2006A2E9F /* CoreGraphics.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,12 +93,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9959368B19FF4708006A2E9F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9959368919FF4701006A2E9F /* UIKit.framework */,
+				9959368719FF46F6006A2E9F /* Foundation.framework */,
+				9959368519FF46EF006A2E9F /* QuartzCore.framework */,
+				9959368319FF46EA006A2E9F /* CoreLocation.framework */,
+				9959368119FF46D2006A2E9F /* CoreGraphics.framework */,
+				9959367F19FF46C1006A2E9F /* CoreData.framework */,
+			);
+			name = Frameworks;
+			path = EveryDo;
+			sourceTree = "<group>";
+		};
+		9959369219FF4AAD006A2E9F /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				9959368F19FF4A09006A2E9F /* CoreDataStack.h */,
+				9959369019FF4A09006A2E9F /* CoreDataStack.m */,
+			);
+			name = "Core Data";
+			sourceTree = "<group>";
+		};
 		99A71C4519F82D0300D2DC76 = {
 			isa = PBXGroup;
 			children = (
 				99A71C5019F82D0300D2DC76 /* EveryDo */,
 				99A71C6D19F82D0300D2DC76 /* EveryDoTests */,
 				99A71C4F19F82D0300D2DC76 /* Products */,
+				9959368B19FF4708006A2E9F /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +138,7 @@
 		99A71C5019F82D0300D2DC76 /* EveryDo */ = {
 			isa = PBXGroup;
 			children = (
+				9959369219FF4AAD006A2E9F /* Core Data */,
 				99A71C5519F82D0300D2DC76 /* AppDelegate.h */,
 				99A71C5619F82D0300D2DC76 /* AppDelegate.m */,
 				99A71C5819F82D0300D2DC76 /* MasterViewController.h */,
@@ -104,11 +150,11 @@
 				99A71C5E19F82D0300D2DC76 /* Main.storyboard */,
 				99A71C6119F82D0300D2DC76 /* Images.xcassets */,
 				99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */,
-				99A71C5119F82D0300D2DC76 /* Supporting Files */,
 				99A71C7A19F833E000D2DC76 /* ToDo.h */,
 				99A71C7B19F833E000D2DC76 /* ToDo.m */,
 				99A71C7D19F8365D00D2DC76 /* ItemCell.h */,
 				99A71C7E19F8365D00D2DC76 /* ItemCell.m */,
+				99A71C5119F82D0300D2DC76 /* Supporting Files */,
 			);
 			path = EveryDo;
 			sourceTree = "<group>";
@@ -242,6 +288,7 @@
 				99A71C7F19F8365D00D2DC76 /* ItemCell.m in Sources */,
 				99A71C7C19F833E000D2DC76 /* ToDo.m in Sources */,
 				997FE01119F8621900E6A9E9 /* AddItemViewController.m in Sources */,
+				9959369119FF4A09006A2E9F /* CoreDataStack.m in Sources */,
 				99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */,
 				99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */,
 				99A71C5419F82D0300D2DC76 /* main.m in Sources */,
