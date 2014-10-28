@@ -16,13 +16,13 @@
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
 
 + (instancetype)defaultStack {
-    static CoreDataStack *defaultStack;
-    static dispatch_once_t onceToken;
+    static CoreDataStack *defaultStack; //static variable only exists once in an application
+    static dispatch_once_t onceToken; //grand central dispatch - guaranteed execute once
     dispatch_once(&onceToken, ^{
         defaultStack = [[self alloc] init];
     });
     
-    return defaultStack;
+    return defaultStack; //moved out of app delegate into own file. this file is reusable, also app delegate is only responsible for responding to events. also made our core data stack a singleton.
 }
 
 - (void)saveContext
@@ -51,7 +51,7 @@
     
     NSPersistentStoreCoordinator *coordinator = [self persistentStoreCoordinator];
     if (coordinator != nil) {
-        _managedObjectContext = [[NSManagedObjectContext alloc] init];
+        _managedObjectContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType]; //
         [_managedObjectContext setPersistentStoreCoordinator:coordinator];
     }
     return _managedObjectContext;
@@ -81,6 +81,8 @@
     
     NSError *error = nil;
     _persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
+    ///////???????????????
+    
     if (![_persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error]) {
         /*
          Replace this implementation with code to handle the error appropriately.

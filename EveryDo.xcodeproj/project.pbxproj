@@ -14,16 +14,17 @@
 		9959368819FF46F6006A2E9F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368719FF46F6006A2E9F /* Foundation.framework */; };
 		9959368A19FF4701006A2E9F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368919FF4701006A2E9F /* UIKit.framework */; };
 		9959369119FF4A09006A2E9F /* CoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 9959369019FF4A09006A2E9F /* CoreDataStack.m */; };
-		997FE01119F8621900E6A9E9 /* AddItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FE01019F8621900E6A9E9 /* AddItemViewController.m */; };
+		9959369519FF4E2F006A2E9F /* EveryDo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9959369319FF4E2F006A2E9F /* EveryDo.xcdatamodeld */; };
+		995936DF1A002841006A2E9F /* UsersManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 995936DE1A002841006A2E9F /* UsersManagedObject.m */; };
+		995936E21A00285A006A2E9F /* ToDoManagedObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 995936E11A00285A006A2E9F /* ToDoManagedObject.m */; };
+		997FE01119F8621900E6A9E9 /* EditItemViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 997FE01019F8621900E6A9E9 /* EditItemViewController.m */; };
 		99A71C5419F82D0300D2DC76 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5319F82D0300D2DC76 /* main.m */; };
 		99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5619F82D0300D2DC76 /* AppDelegate.m */; };
 		99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5919F82D0300D2DC76 /* MasterViewController.m */; };
-		99A71C5D19F82D0300D2DC76 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5C19F82D0300D2DC76 /* DetailViewController.m */; };
 		99A71C6019F82D0300D2DC76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C5E19F82D0300D2DC76 /* Main.storyboard */; };
 		99A71C6219F82D0300D2DC76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C6119F82D0300D2DC76 /* Images.xcassets */; };
 		99A71C6519F82D0300D2DC76 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */; };
 		99A71C7119F82D0300D2DC76 /* EveryDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C7019F82D0300D2DC76 /* EveryDoTests.m */; };
-		99A71C7C19F833E000D2DC76 /* ToDo.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C7B19F833E000D2DC76 /* ToDo.m */; };
 		99A71C7F19F8365D00D2DC76 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C7E19F8365D00D2DC76 /* ItemCell.m */; };
 /* End PBXBuildFile section */
 
@@ -46,8 +47,13 @@
 		9959368919FF4701006A2E9F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9959368F19FF4A09006A2E9F /* CoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataStack.h; sourceTree = "<group>"; };
 		9959369019FF4A09006A2E9F /* CoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataStack.m; sourceTree = "<group>"; };
-		997FE00F19F8621900E6A9E9 /* AddItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddItemViewController.h; sourceTree = "<group>"; };
-		997FE01019F8621900E6A9E9 /* AddItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddItemViewController.m; sourceTree = "<group>"; };
+		9959369419FF4E2F006A2E9F /* EveryDo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = EveryDo.xcdatamodel; sourceTree = "<group>"; };
+		995936DD1A002841006A2E9F /* UsersManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersManagedObject.h; sourceTree = "<group>"; };
+		995936DE1A002841006A2E9F /* UsersManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersManagedObject.m; sourceTree = "<group>"; };
+		995936E01A00285A006A2E9F /* ToDoManagedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDoManagedObject.h; sourceTree = "<group>"; };
+		995936E11A00285A006A2E9F /* ToDoManagedObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDoManagedObject.m; sourceTree = "<group>"; };
+		997FE00F19F8621900E6A9E9 /* EditItemViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditItemViewController.h; sourceTree = "<group>"; };
+		997FE01019F8621900E6A9E9 /* EditItemViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditItemViewController.m; sourceTree = "<group>"; };
 		99A71C4E19F82D0300D2DC76 /* EveryDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EveryDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A71C5219F82D0300D2DC76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A71C5319F82D0300D2DC76 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -55,16 +61,12 @@
 		99A71C5619F82D0300D2DC76 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		99A71C5819F82D0300D2DC76 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		99A71C5919F82D0300D2DC76 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
-		99A71C5B19F82D0300D2DC76 /* DetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
-		99A71C5C19F82D0300D2DC76 /* DetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
 		99A71C5F19F82D0300D2DC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		99A71C6119F82D0300D2DC76 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		99A71C6419F82D0300D2DC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		99A71C6A19F82D0300D2DC76 /* EveryDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EveryDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A71C6F19F82D0300D2DC76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99A71C7019F82D0300D2DC76 /* EveryDoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EveryDoTests.m; sourceTree = "<group>"; };
-		99A71C7A19F833E000D2DC76 /* ToDo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ToDo.h; sourceTree = "<group>"; };
-		99A71C7B19F833E000D2DC76 /* ToDo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ToDo.m; sourceTree = "<group>"; };
 		99A71C7D19F8365D00D2DC76 /* ItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemCell.h; sourceTree = "<group>"; };
 		99A71C7E19F8365D00D2DC76 /* ItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -112,6 +114,11 @@
 			children = (
 				9959368F19FF4A09006A2E9F /* CoreDataStack.h */,
 				9959369019FF4A09006A2E9F /* CoreDataStack.m */,
+				9959369319FF4E2F006A2E9F /* EveryDo.xcdatamodeld */,
+				995936E01A00285A006A2E9F /* ToDoManagedObject.h */,
+				995936E11A00285A006A2E9F /* ToDoManagedObject.m */,
+				995936DD1A002841006A2E9F /* UsersManagedObject.h */,
+				995936DE1A002841006A2E9F /* UsersManagedObject.m */,
 			);
 			name = "Core Data";
 			sourceTree = "<group>";
@@ -143,15 +150,11 @@
 				99A71C5619F82D0300D2DC76 /* AppDelegate.m */,
 				99A71C5819F82D0300D2DC76 /* MasterViewController.h */,
 				99A71C5919F82D0300D2DC76 /* MasterViewController.m */,
-				99A71C5B19F82D0300D2DC76 /* DetailViewController.h */,
-				99A71C5C19F82D0300D2DC76 /* DetailViewController.m */,
-				997FE00F19F8621900E6A9E9 /* AddItemViewController.h */,
-				997FE01019F8621900E6A9E9 /* AddItemViewController.m */,
+				997FE00F19F8621900E6A9E9 /* EditItemViewController.h */,
+				997FE01019F8621900E6A9E9 /* EditItemViewController.m */,
 				99A71C5E19F82D0300D2DC76 /* Main.storyboard */,
 				99A71C6119F82D0300D2DC76 /* Images.xcassets */,
 				99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */,
-				99A71C7A19F833E000D2DC76 /* ToDo.h */,
-				99A71C7B19F833E000D2DC76 /* ToDo.m */,
 				99A71C7D19F8365D00D2DC76 /* ItemCell.h */,
 				99A71C7E19F8365D00D2DC76 /* ItemCell.m */,
 				99A71C5119F82D0300D2DC76 /* Supporting Files */,
@@ -286,13 +289,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A71C7F19F8365D00D2DC76 /* ItemCell.m in Sources */,
-				99A71C7C19F833E000D2DC76 /* ToDo.m in Sources */,
-				997FE01119F8621900E6A9E9 /* AddItemViewController.m in Sources */,
+				995936DF1A002841006A2E9F /* UsersManagedObject.m in Sources */,
+				9959369519FF4E2F006A2E9F /* EveryDo.xcdatamodeld in Sources */,
+				997FE01119F8621900E6A9E9 /* EditItemViewController.m in Sources */,
 				9959369119FF4A09006A2E9F /* CoreDataStack.m in Sources */,
 				99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */,
 				99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */,
 				99A71C5419F82D0300D2DC76 /* main.m in Sources */,
-				99A71C5D19F82D0300D2DC76 /* DetailViewController.m in Sources */,
+				995936E21A00285A006A2E9F /* ToDoManagedObject.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -497,6 +501,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9959369319FF4E2F006A2E9F /* EveryDo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9959369419FF4E2F006A2E9F /* EveryDo.xcdatamodel */,
+			);
+			currentVersion = 9959369419FF4E2F006A2E9F /* EveryDo.xcdatamodel */;
+			path = EveryDo.xcdatamodeld;
+			sourceTree = SOURCE_ROOT;
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 99A71C4619F82D0300D2DC76 /* Project object */;
 }

@@ -80,7 +80,7 @@
                                     <outlet property="descripLabel" destination="euU-cd-8lY" id="Htj-mY-QPT"/>
                                     <outlet property="priorityLabel" destination="2G1-rI-hkO" id="eFA-w5-Gh0"/>
                                     <outlet property="titleLabel" destination="iKY-K4-eL6" id="Hhj-Ys-LCm"/>
-                                    <segue destination="Ah7-4n-0Wa" kind="show" identifier="showDetail" id="jUr-3t-vfg"/>
+                                    <segue destination="dyN-tn-kRy" kind="presentation" identifier="EditSegue" id="NIq-aq-6lt"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -105,7 +105,7 @@
         <!--Add New To-Do Item-->
         <scene sceneID="c0R-Cg-Pi5">
             <objects>
-                <viewController id="11X-cz-idp" customClass="AddItemViewController" sceneMemberID="viewController">
+                <viewController id="11X-cz-idp" customClass="EditItemViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="mZT-LN-RW0"/>
                         <viewControllerLayoutGuide type="bottom" id="qcL-YS-6jd"/>
@@ -242,45 +242,6 @@
             </objects>
             <point key="canvasLocation" x="2068.5" y="354"/>
         </scene>
-        <!--Detail-->
-        <scene sceneID="Cn3-H9-jdl">
-            <objects>
-                <viewController title="Detail" id="Ah7-4n-0Wa" customClass="DetailViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="cIm-e0-J51"/>
-                        <viewControllerLayoutGuide type="bottom" id="a0L-h9-sNL"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="MMQ-IT-qOo">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Detail view content goes here" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Lei-5M-9Gs">
-                                <rect key="frame" x="20" y="292" width="560" height="17"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" size="system"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="140" width="360" height="561"/>
-                                </variation>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="leading" secondItem="MMQ-IT-qOo" secondAttribute="leading" constant="20" symbolic="YES" id="62x-JV-TTJ"/>
-                            <constraint firstItem="Lei-5M-9Gs" firstAttribute="centerY" secondItem="MMQ-IT-qOo" secondAttribute="centerY" id="JzS-HC-Rnl"/>
-                            <constraint firstAttribute="trailing" secondItem="Lei-5M-9Gs" secondAttribute="trailing" constant="20" symbolic="YES" id="pXB-RP-Zz6"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Detail" id="cra-N8-TIN"/>
-                    <connections>
-                        <outlet property="detailDescriptionLabel" destination="Lei-5M-9Gs" id="sCT-F7-F6f"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lrm-kH-fPn" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1405.5" y="-315"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="ZNy-ZM-RnW">
             <objects>
@@ -300,4 +261,7 @@
             <point key="canvasLocation" x="1360.5" y="354"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="NIq-aq-6lt"/>
+    </inferredMetricsTieBreakers>
 </document>

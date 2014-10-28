@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6244" systemVersion="13F34" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ToDoManagedObject" representedClassName="ToDoManagedObject" syncable="YES">
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCompleted" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="priorityNumber" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="UsersManagedObject" inverseName="toDoList" inverseEntity="UsersManagedObject" syncable="YES"/>
+    </entity>
+    <entity name="UsersManagedObject" representedClassName="UsersManagedObject" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="toDoList" toMany="YES" deletionRule="Cascade" destinationEntity="ToDoManagedObject" inverseName="user" inverseEntity="ToDoManagedObject" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ToDoManagedObject" positionX="0" positionY="0" width="128" height="118"/>
+        <element name="UsersManagedObject" positionX="151" positionY="2" width="128" height="73"/>
+    </elements>
+</model>

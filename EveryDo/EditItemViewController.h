@@ -7,19 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ToDo.h"
+#import "CoreDataStack.h"
 
-@class AddItemViewController;
+@class EditItemViewController;
+@class ToDoManagedObject;
 
 //define a new delegate protocol that we can use to communicate from the Add Item screen to the Master View Controller screen when the user taps Cancel or Done
-@protocol AddItemViewControllerDelegate <NSObject>
-- (void)addItemViewControllerDidCancel:(AddItemViewController *)controller;
-- (void)addItemViewController:(AddItemViewController *)controller didAddItem:(ToDo *)item;
-@end
+//@protocol AddItemViewControllerDelegate <NSObject>
+//- (void)addItemViewControllerDidCancel:(EditItemViewController *)controller;
+//- (void)addItemViewController:(EditItemViewController *)controller didAddItem:(ToDo *)item;
+//@end
 
-@interface AddItemViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
+@interface EditItemViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
 
-@property (nonatomic, weak) id <AddItemViewControllerDelegate> delegate;
+@property (nonatomic, strong) ToDoManagedObject *entry;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descripTextView;
