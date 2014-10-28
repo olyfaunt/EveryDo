@@ -7,6 +7,7 @@
 //
 
 #import "UsersViewController.h"
+#import "UsersManagedObject.h"
 
 @interface UsersViewController ()
 
@@ -23,8 +24,16 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _arrayOfUsers = [[NSArray alloc] init];
+    _arrayOfUsers = [NSMutableArray arrayWithCapacity:20];
     
+    UsersManagedObject *umo = [[UsersManagedObject alloc] initWithName:@"Audrey"];
+    [_arrayOfUsers addObject:umo];
+    
+    umo = [[UsersManagedObject alloc] initWithName:@"Jane"];
+    [_arrayOfUsers addObject:umo];
+    
+    umo = [[UsersManagedObject alloc] initWithName:@"Jessica"];
+    [_arrayOfUsers addObject:umo];
     
 }
 
@@ -37,23 +46,24 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return 0;
+    return _arrayOfUsers.count;
 }
 
-/*
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
     
-    // Configure the cell...
+    
+
     
     return cell;
 }
-*/
+
 
 /*
 // Override to support conditional editing of the table view.

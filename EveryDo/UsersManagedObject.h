@@ -24,4 +24,6 @@
 - (void)addToDoList:(NSSet *)values;
 - (void)removeToDoList:(NSSet *)values;
 
+- (instancetype)initWithName:(NSString*)name;
+
 @end
