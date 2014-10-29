@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "CoreDataStack.h"
+#import "ToDoManagedObject.h"
+#import "UsersManagedObject.h"
 
 @class EditItemViewController;
 @class ToDoManagedObject;
@@ -18,14 +20,18 @@
 //- (void)addItemViewController:(EditItemViewController *)controller didAddItem:(ToDo *)item;
 //@end
 
-@interface EditItemViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
+@interface EditItemViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) ToDoManagedObject *entry;
+
+
+@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
 
 @property (weak, nonatomic) IBOutlet UITextField *titleTextField;
 @property (weak, nonatomic) IBOutlet UITextView *descripTextView;
 @property (weak, nonatomic) IBOutlet UITextField *priorityTextField;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *isCompletedSegmentedControl;
+@property (weak, nonatomic) IBOutlet UIPickerView *pickerView;
 
 - (IBAction)cancel:(id)sender;
 - (IBAction)done:(id)sender;

@@ -8,8 +8,12 @@
 
 #import "UsersViewController.h"
 #import "UsersManagedObject.h"
+#import "UserCell.h"
+#import "CoreDataStack.h"
 
-@interface UsersViewController ()
+@interface UsersViewController ()<NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @end
 
@@ -24,17 +28,8 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
-    _arrayOfUsers = [NSMutableArray arrayWithCapacity:20];
-    
-    UsersManagedObject *umo = [[UsersManagedObject alloc] initWithName:@"Audrey"];
-    [_arrayOfUsers addObject:umo];
-    
-    umo = [[UsersManagedObject alloc] initWithName:@"Jane"];
-    [_arrayOfUsers addObject:umo];
-    
-    umo = [[UsersManagedObject alloc] initWithName:@"Jessica"];
-    [_arrayOfUsers addObject:umo];
-    
+    [self.fetchedResultsController performFetch:nil];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,23 +41,69 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     // Return the number of rows in the section.
-    return _arrayOfUsers.count;
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
+    UserCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserCell" forIndexPath:indexPath];
     
+    UsersManagedObject *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
     
-
+    cell.nameLabel.text = user.name;
     
     return cell;
 }
+
+#pragma mark - Delete User
+
+
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    UsersManagedObject *user = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    [[coreDataStack managedObjectContext] deleteObject:user];
+    [coreDataStack saveContext];
+}
+
+
+#pragma mark - Core Data Fetch
+
+- (NSFetchRequest *)entryListFetchRequest {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"UsersManagedObject"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"name" ascending:YES]];
+    
+    return fetchRequest;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    NSFetchRequest *fetchRequest = [self entryListFetchRequest];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
 
 
 /*

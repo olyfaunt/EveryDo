@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		992A13EE1A00331B00606F97 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13ED1A00331B00606F97 /* UsersViewController.m */; };
 		992A13F51A00418300606F97 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13F41A00418300606F97 /* UserCell.m */; };
+		992A13F81A0049F700606F97 /* AddUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13F71A0049F700606F97 /* AddUserViewController.m */; };
 		9959368019FF46C1006A2E9F /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959367F19FF46C1006A2E9F /* CoreData.framework */; };
 		9959368219FF46D2006A2E9F /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368119FF46D2006A2E9F /* CoreGraphics.framework */; };
 		9959368419FF46EA006A2E9F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9959368319FF46EA006A2E9F /* CoreLocation.framework */; };
@@ -45,6 +46,8 @@
 		992A13ED1A00331B00606F97 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		992A13F31A00418300606F97 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
 		992A13F41A00418300606F97 /* UserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserCell.m; sourceTree = "<group>"; };
+		992A13F61A0049F700606F97 /* AddUserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUserViewController.h; sourceTree = "<group>"; };
+		992A13F71A0049F700606F97 /* AddUserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUserViewController.m; sourceTree = "<group>"; };
 		9959367F19FF46C1006A2E9F /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		9959368119FF46D2006A2E9F /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		9959368319FF46EA006A2E9F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -101,6 +104,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		992A13F91A004BC600606F97 /* Users */ = {
+			isa = PBXGroup;
+			children = (
+				992A13EC1A00331B00606F97 /* UsersViewController.h */,
+				992A13ED1A00331B00606F97 /* UsersViewController.m */,
+				992A13F61A0049F700606F97 /* AddUserViewController.h */,
+				992A13F71A0049F700606F97 /* AddUserViewController.m */,
+			);
+			name = Users;
+			sourceTree = "<group>";
+		};
+		992A13FA1A004BD500606F97 /* Items */ = {
+			isa = PBXGroup;
+			children = (
+				99A71C5819F82D0300D2DC76 /* MasterViewController.h */,
+				99A71C5919F82D0300D2DC76 /* MasterViewController.m */,
+				997FE00F19F8621900E6A9E9 /* EditItemViewController.h */,
+				997FE01019F8621900E6A9E9 /* EditItemViewController.m */,
+			);
+			name = Items;
+			sourceTree = "<group>";
+		};
 		9959368B19FF4708006A2E9F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,12 +179,8 @@
 				9959369219FF4AAD006A2E9F /* Core Data */,
 				99A71C5519F82D0300D2DC76 /* AppDelegate.h */,
 				99A71C5619F82D0300D2DC76 /* AppDelegate.m */,
-				99A71C5819F82D0300D2DC76 /* MasterViewController.h */,
-				99A71C5919F82D0300D2DC76 /* MasterViewController.m */,
-				997FE00F19F8621900E6A9E9 /* EditItemViewController.h */,
-				997FE01019F8621900E6A9E9 /* EditItemViewController.m */,
-				992A13EC1A00331B00606F97 /* UsersViewController.h */,
-				992A13ED1A00331B00606F97 /* UsersViewController.m */,
+				992A13FA1A004BD500606F97 /* Items */,
+				992A13F91A004BC600606F97 /* Users */,
 				99A71C5E19F82D0300D2DC76 /* Main.storyboard */,
 				99A71C6119F82D0300D2DC76 /* Images.xcassets */,
 				99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */,
@@ -303,6 +324,7 @@
 				995936DF1A002841006A2E9F /* UsersManagedObject.m in Sources */,
 				9959369519FF4E2F006A2E9F /* EveryDo.xcdatamodeld in Sources */,
 				997FE01119F8621900E6A9E9 /* EditItemViewController.m in Sources */,
+				992A13F81A0049F700606F97 /* AddUserViewController.m in Sources */,
 				9959369119FF4A09006A2E9F /* CoreDataStack.m in Sources */,
 				99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */,
 				99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */,
