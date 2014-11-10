@@ -7,9 +7,10 @@
 //
 
 #import "MasterViewController.h"
-#import "DetailViewController.h"
 
-@interface MasterViewController ()
+@interface MasterViewController () <NSFetchedResultsControllerDelegate>
+
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 @property NSMutableArray *objects;
 
@@ -25,6 +26,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
+    [self.fetchedResultsController performFetch:nil];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -36,52 +38,58 @@
 #pragma mark - Segues
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"showDetail"]) {
-        NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        ToDo *item = self.vcItemsArray[indexPath.row];
-        [[segue destinationViewController] setDetailItem:item];
+    if ([[segue identifier] isEqualToString:@"EditSegue"]) {
+        UITableViewCell *cell = sender;
+        NSIndexPath *indexPath = [self.tableView indexPathForCell:cell];
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        EditItemViewController *editItemViewController = (EditItemViewController *)[navigationController topViewController];
+        editItemViewController.entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
     }
     
     //have to tell AddItemViewController that (the MasterViewController) is its delegate:
     if ([segue.identifier isEqualToString:@"AddItem"]) {
         
         UINavigationController *navigationController = segue.destinationViewController;
-        AddItemViewController *addItemViewController = [navigationController viewControllers][0];
-        addItemViewController.delegate = self;
+        EditItemViewController *editItemViewController = [navigationController viewControllers][0];
+//        editItemViewController.delegate = self;
     }
 }
 
 #pragma mark - Table View
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.vcItemsArray.count;
+    //each section in our table view is represented by a sectionInfo object that conforms to the <SectionInfo> protocol. We grab that specific sectionInfo object and return from it the number of objects in that section.
+    id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController sections][section];
+    return [sectionInfo numberOfObjects];
+//    return self.vcItemsArray.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    ItemCell *cell = (ItemCell*)[tableView dequeueReusableCellWithIdentifier:@"ItemCell" forIndexPath:indexPath];
+    static NSString *cellIdentifier = @"ItemCell";
+    ItemCell *cell = (ItemCell*)[tableView dequeueReusableCellWithIdentifier:cellIdentifier forIndexPath:indexPath];
     
-//    cell.tag = indexPath.row; //////get the cell's index path #
+    ToDoManagedObject *entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    
     cell.delegate = self;
     
-    ToDo *toDoItem = (self.vcItemsArray)[indexPath.row];
-
     NSDictionary* attributes = @{
                                  NSStrikethroughStyleAttributeName: [NSNumber numberWithInt:NSUnderlineStyleSingle]
                                  };
     
     NSAttributedString* attrTitle = [[NSAttributedString alloc]
-                                    initWithString:toDoItem.title attributes:attributes];
+                                     initWithString:entry.title attributes:attributes];
     NSAttributedString* attrDescrip = [[NSAttributedString alloc]
-                                    initWithString:toDoItem.descrip attributes:attributes];
+                                       initWithString:entry.descrip attributes:attributes];
     NSAttributedString* attrPriority = [[NSAttributedString alloc]
-                                    initWithString:toDoItem.priorityNumber attributes:attributes];
-
+                                        initWithString:entry.priorityNumber attributes:attributes];
     
-    if (toDoItem.isCompleted) {
+    
+    if ([entry.isCompleted boolValue]) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
         cell.titleLabel.attributedText = attrTitle;
         cell.descripLabel.attributedText = attrDescrip;
@@ -89,64 +97,70 @@
         
     } else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-        cell.titleLabel.text = toDoItem.title;
-        cell.descripLabel.text = toDoItem.descrip;
-        cell.priorityLabel.text = toDoItem.priorityNumber;
+        cell.titleLabel.text = entry.title;
+        cell.descripLabel.text = entry.descrip;
+        cell.priorityLabel.text = entry.priorityNumber;
     }
     return cell;
 }
-
-//
-
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Return NO if you do not want the specified item to be editable.
-    return YES; // you have to ensure the existing UIPanGestureRecognizer — which lets you swipe to show the delete button — is disabled. Otherwise that gesture recognizer will collide with the custom one you’re adding to your project.
+    
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return UITableViewCellEditingStyleDelete;
 }
-
+    
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [self.vcItemsArray removeObjectAtIndex:indexPath.row];
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }
-//    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-//        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
-//    }
+    ToDoManagedObject *entry = [self.fetchedResultsController objectAtIndexPath:indexPath];
+        
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    [[coreDataStack managedObjectContext] deleteObject:entry];
+    [coreDataStack saveContext];
 }
-
-
-//implement the methods from the AddItemViewControllerDelegate
-
-- (void)addItemViewControllerDidCancel:(AddItemViewController *)controller {
-    [self dismissViewControllerAnimated:YES completion:nil]; //just go back to previous screen
-}
-
-- (void)addItemViewController:(AddItemViewController *)controller didAddItem:(ToDo *)item {
-    [self.vcItemsArray addObject:item];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:([self.vcItemsArray count] - 1) inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-    [self dismissViewControllerAnimated:YES completion:nil]; //then go back to previous screen
-}
-
-//implement the methods from the ItemCellDelegate
 
 - (void)didSwipeItemCellToRight:(ItemCell*)item {
     
-    //tableview indexpathforcell //never use in cellforrowindexpath b/c cyclical (nikita)
-    
-    //int indexNumber = (int)item.tag; <<< this doesn't work because index numbers change when delete item
     NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
-    int indexPathNo = (int)[indexPath row];
-    ToDo *thisItem = (self.vcItemsArray)[(int)indexPathNo];
-    thisItem.isCompleted = YES;
+    ToDoManagedObject *thisItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    thisItem.isCompleted = [NSNumber numberWithBool:YES];
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    [coreDataStack saveContext];
     [self.tableView reloadData];
 }
 
 - (void)didSwipeItemCellToLeft:(ItemCell*)item {
-    //int indexNumber = (int)item.tag;
+
     NSIndexPath *indexPath = [self.tableView indexPathForCell:item];
-    int indexPathNo = (int)[indexPath row];
-    ToDo *thisItem = (self.vcItemsArray)[(int)indexPathNo];
-    thisItem.isCompleted = NO;
+    ToDoManagedObject *thisItem = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    thisItem.isCompleted = [NSNumber numberWithBool:NO];
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    [coreDataStack saveContext];
     [self.tableView reloadData];
 }
+
+#pragma mark - Core Data Fetch
+
+- (NSFetchRequest *)entryListFetchRequest {
+    NSFetchRequest *fetchRequest = [NSFetchRequest fetchRequestWithEntityName:@"ToDoManagedObject"];
+    fetchRequest.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"title" ascending:YES]];
+    
+    return fetchRequest;
+}
+
+- (NSFetchedResultsController *)fetchedResultsController {
+    if (_fetchedResultsController != nil) {
+        return _fetchedResultsController;
+    }
+    
+    CoreDataStack *coreDataStack = [CoreDataStack defaultStack];
+    NSFetchRequest *fetchRequest = [self entryListFetchRequest];
+    
+    _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:coreDataStack.managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    _fetchedResultsController.delegate = self;
+    
+    return _fetchedResultsController;
+}
+
+-(void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    [self.tableView reloadData];
+}
+
 @end

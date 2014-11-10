@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 @class ItemCell;
+@class ToDoManagedObject;
 
 //set up delegate in MasterViewController so when swipe, change item's isCompleted to YES or NO
 @protocol ItemCellDelegate <NSObject>

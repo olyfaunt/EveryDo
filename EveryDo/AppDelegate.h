@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ToDo.h"
 #import "MasterViewController.h"
+#import "CoreDataStack.h"
+
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
