@@ -12,8 +12,9 @@
 #import "ToDoManagedObject.h"
 #import "UsersManagedObject.h"
 #import "CoreDataStack.h"
-#import "ItemCell.h"
 #import <CoreData/CoreData.h>
+#import "ItemCell.h"
+
 
 @interface MasterViewController : UITableViewController <ItemCellDelegate>
 

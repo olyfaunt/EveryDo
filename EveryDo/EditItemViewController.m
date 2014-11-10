@@ -57,7 +57,6 @@
         {
             self.isCompletedSegmentedControl.selectedSegmentIndex = 1;
         }
-//        [self.pickerView.
 
     }
 }

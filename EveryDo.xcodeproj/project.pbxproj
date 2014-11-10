@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		991B2D151A10459F00C9FD81 /* tasks@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 991B2D131A10459F00C9FD81 /* tasks@2x.png */; };
+		991B2D161A10459F00C9FD81 /* users@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 991B2D141A10459F00C9FD81 /* users@2x.png */; };
 		992A13EE1A00331B00606F97 /* UsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13ED1A00331B00606F97 /* UsersViewController.m */; };
 		992A13F51A00418300606F97 /* UserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13F41A00418300606F97 /* UserCell.m */; };
 		992A13F81A0049F700606F97 /* AddUserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 992A13F71A0049F700606F97 /* AddUserViewController.m */; };
@@ -25,7 +27,6 @@
 		99A71C5719F82D0300D2DC76 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5619F82D0300D2DC76 /* AppDelegate.m */; };
 		99A71C5A19F82D0300D2DC76 /* MasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C5919F82D0300D2DC76 /* MasterViewController.m */; };
 		99A71C6019F82D0300D2DC76 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C5E19F82D0300D2DC76 /* Main.storyboard */; };
-		99A71C6219F82D0300D2DC76 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C6119F82D0300D2DC76 /* Images.xcassets */; };
 		99A71C6519F82D0300D2DC76 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */; };
 		99A71C7119F82D0300D2DC76 /* EveryDoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C7019F82D0300D2DC76 /* EveryDoTests.m */; };
 		99A71C7F19F8365D00D2DC76 /* ItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 99A71C7E19F8365D00D2DC76 /* ItemCell.m */; };
@@ -42,6 +43,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		991B2D131A10459F00C9FD81 /* tasks@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tasks@2x.png"; sourceTree = "<group>"; };
+		991B2D141A10459F00C9FD81 /* users@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "users@2x.png"; sourceTree = "<group>"; };
 		992A13EC1A00331B00606F97 /* UsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UsersViewController.h; sourceTree = "<group>"; };
 		992A13ED1A00331B00606F97 /* UsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UsersViewController.m; sourceTree = "<group>"; };
 		992A13F31A00418300606F97 /* UserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserCell.h; sourceTree = "<group>"; };
@@ -71,7 +74,6 @@
 		99A71C5819F82D0300D2DC76 /* MasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MasterViewController.h; sourceTree = "<group>"; };
 		99A71C5919F82D0300D2DC76 /* MasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MasterViewController.m; sourceTree = "<group>"; };
 		99A71C5F19F82D0300D2DC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		99A71C6119F82D0300D2DC76 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		99A71C6419F82D0300D2DC76 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		99A71C6A19F82D0300D2DC76 /* EveryDoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EveryDoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		99A71C6F19F82D0300D2DC76 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,8 +184,9 @@
 				992A13FA1A004BD500606F97 /* Items */,
 				992A13F91A004BC600606F97 /* Users */,
 				99A71C5E19F82D0300D2DC76 /* Main.storyboard */,
-				99A71C6119F82D0300D2DC76 /* Images.xcassets */,
 				99A71C6319F82D0300D2DC76 /* LaunchScreen.xib */,
+				991B2D131A10459F00C9FD81 /* tasks@2x.png */,
+				991B2D141A10459F00C9FD81 /* users@2x.png */,
 				99A71C7D19F8365D00D2DC76 /* ItemCell.h */,
 				99A71C7E19F8365D00D2DC76 /* ItemCell.m */,
 				992A13F31A00418300606F97 /* UserCell.h */,
@@ -300,8 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				99A71C6019F82D0300D2DC76 /* Main.storyboard in Resources */,
+				991B2D151A10459F00C9FD81 /* tasks@2x.png in Resources */,
 				99A71C6519F82D0300D2DC76 /* LaunchScreen.xib in Resources */,
-				99A71C6219F82D0300D2DC76 /* Images.xcassets in Resources */,
+				991B2D161A10459F00C9FD81 /* users@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
